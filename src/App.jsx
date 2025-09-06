@@ -1,12 +1,15 @@
 
 
-function App() {
+const App = () => {
+    return (
+        <div>
+            <>
+            <div className="flex justify-center items-center">
 
-  return (
-    <>
-     <h1 className="text-2xl">Hello</h1>
-    </>
-  )
-}
+            </div>
+            </>
+        </div>
+    );
+};
 
-export default App
+export default App;
