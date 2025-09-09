@@ -13,41 +13,45 @@ import Users from './Users/Users.jsx';
 import UserDetails from './UserDetails/UserDetails.jsx';
 import Posts from './Posts/Posts.jsx';
 import PostDetails from './Posts/PostDetails.jsx';
+import ErrorPage from './ErrorPage/ErrorPage.jsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <div className='flex justify-center items-center text-center gap-8'>
-      <Home/>
-    </div>,
+                 <Home />
+            </div>,
+    errorElement: <div className='flex justify-center items-center text-center gap-8 mt-20'>
+                 <ErrorPage />
+            </div>,
     children: [
       {
         path: '/about',
-        element: <About/>
+        element: <About />
       },
       {
         path: '/contact',
-        element: <Contact/>
+        element: <Contact />
       },
       {
         path: '/users',
-        loader: ()=> fetch('/public/user.json'),
-        element: <Users/>
+        loader: () => fetch('/public/user.json'),
+        element: <Users />
       },
       {
         path: '/user/:userId',
-        loader: ({params})=> fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`),
-        element: <UserDetails/>
+        loader: ({ params }) => fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`),
+        element: <UserDetails />
       },
       {
         path: '/posts',
-        loader: ()=> fetch('https://jsonplaceholder.typicode.com/posts'),
-        element: <Posts/>
+        loader: () => fetch('https://jsonplaceholder.typicode.com/posts'),
+        element: <Posts />
       },
       {
         path: '/post/:postId',
-        loader: ({params})=> fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`),
-        element: <PostDetails/>
+        loader: ({ params }) => fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`),
+        element: <PostDetails />
       }
     ]
   }
@@ -55,6 +59,6 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   </StrictMode>,
 )
